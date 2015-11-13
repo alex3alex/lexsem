@@ -211,6 +211,7 @@ sugar & approach & 0.88 & 0.05 & 65 & 23 \\ \hline
 \end{frame}
 
 
+
 \begin{frame}
 \frametitle{Correlations with human judgments}
 
@@ -223,11 +224,59 @@ sugar & approach & 0.88 & 0.05 & 65 & 23 \\ \hline
 
 
 
+\begin{frame}
+\frametitle{Correlations with human judgments}
+
+\begin{figure}
+    \centering
+        \includegraphics[width=0.55\textwidth]{../figures/mc-correlations-2}
+    \caption{ Spearman correlation on the Miller-Charles (MC) dataset. $\rho$ of a similarity measure is 0.843 (p<0.001) and $\rho$ of a random measure is -0.173 (p=0.360). }
+    \label{fig:mc-correlations}
+\end{figure}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Semantic Relation Ranking}
+\frametitle{Semantic Relation Ranking and Classification}
+
+{ \scriptsize
+
+\begin{table}[h]\footnotesize
+\begin{tabular}{ |c|l|l| }
+\hline
+\bf слово, $c_i$ & \bf  слово, $c_j$ & \bf тип отношения, $t$  \\ \hline \hline
+judge & adjudicate & syn \\
+judge & arbitrate & syn \\
+judge & asessor & syn \\
+... & ... & ...   \\
+judge & pc & random \\ 
+judge & fare & random \\
+judge & lemon & random \\ \hline
+\end{tabular}
+\end {table}
+
+}
+
+\textbf{Datasets:}
+\begin{itemize}
+  \item BLESS (Baroni and Lenci, 2011)  -- 26554 relations (hyper, coord, mero, event, attri, random)  
+  \item SN (Panchenko, 2012) -- 14682  relations (syn, random) 
+ \item RT, AE, AE2 (Panchenko et al., 2015)
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Semantic Relation Ranking  and Classification}
 
 \begin{itemize}
    \item Precision $P(k=50)= \frac{1}{7} \approx 0.86 $
@@ -258,5 +307,50 @@ aficionado & bawdyhouse & random &  0.00000 \\
 \end {table}
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Semantic Relation Ranking  and Classification: BLESS}
+
+\begin{table*}
+\centering
+%\caption{A target word ``hawk" and all its relatum words from the BLESS dataset ranked by similarity score. The table on the left      contains relations retrieved with the $k$-NN threshold of 50$\%$ The whole table contains all relations of the word ($k=100\%). }
+\includegraphics[width=0.55\textwidth]{../figures/bless-example}
+\label{tbl:bless-example}
+\end{table*}
+    
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Semantic Relation Ranking  and Classification}
+
+\begin{itemize}
+  
+  \item Based on the number of  \alert{correctly classified or ranked} semantic relations.
+  
+
+\item $R$ -- set of non-random relations, e.g. not like $\langle animal, random, bishop \rangle$
+
+\item $\hat{R}(k)$ set of extracted relations at $k$ nearest neighbours
+
+\begin{block}{Evaluation metrics}
+
+    
+    \begin{itemize}
+        \item Precision: $P(k)=$$\frac{|R \cap \hat{R}(k)|}{|\hat{R}(k)|}$,
+        \item Recall: $R(k)=$$\frac{|R \cap \hat{R}(k)|}{|R|}$,
+        \item F1-measure: $F(k)= 2 \cdot \frac{P(k) \cdot R(k)}{P(k) + R(k)}$,
+    \end{itemize}   
+    \end{block}
+
+    
+
+\end{itemize}
+    
+\end{frame}
+
 
 
